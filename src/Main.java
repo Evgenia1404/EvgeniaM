@@ -1,5 +1,5 @@
-import javax.imageio.ImageIO;
-import javax.swing.*;
+/*import java.imageio.ImageIO;
+import java.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -51,4 +51,4 @@ public class Main extends JFrame {
 
 
 
-}
+}*/
