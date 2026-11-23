@@ -3,13 +3,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Random;
 
-public class fish {
-    public BufferedImage image;
+public class wood {
+    public BufferedImage wood;
     public int x, y;
 
-    fish() {
+    wood() {
         try {
-            image = ImageIO.read(new File("src/img/бревно.png"));
+            wood = ImageIO.read(new File("src/img/wood1.png"));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

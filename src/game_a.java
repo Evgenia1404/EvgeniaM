@@ -10,11 +10,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class game_fox extends JFrame {
-    public BufferedImage bg, fox;
-    public int x = 50;
-    public ArrayList<fish> fish_ = new ArrayList<fish>();
+public class game_a extends JFrame {
+    public BufferedImage bg, gamer;
+    public int x = 835;
+    public int y = 627;
+    public ArrayList<wood> wood_ = new ArrayList<wood>();
     public KeyListener kl = new KeyListener() {
+
         @Override
         public void keyTyped(KeyEvent e) {
         }
@@ -22,18 +24,30 @@ public class game_fox extends JFrame {
         @Override
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                x++;
+                    x++;
                 repaint();
             }
             if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                x--;
+                    x--;
                 repaint();
             }
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                if (fish_.size() > 0) {
-                    fish_.remove(new Random().nextInt(fish_.size()));
+                if (wood_.size() > 0) {
+                    wood_.remove(new Random().nextInt(wood_.size()));
                     repaint();
                 }
+            }
+            if (e.getKeyCode() == KeyEvent.VK_UP) {
+
+                    y--;
+
+                repaint();
+            }
+            if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+
+                    y++;
+
+                repaint();
             }
         }
 
@@ -45,40 +59,46 @@ public class game_fox extends JFrame {
     ActionListener al = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < fish_.size(); i++)
-                fish_.get(i).move();
+            for (int i = 0; i < wood_.size(); i++)
+                wood_.get(i).move();
             repaint();
         }
     };
     //Timer time = new Timer(100,al);
 
-    game_fox() {
+    public game_a() {
+
         try {
             bg = ImageIO.read(new File("src/img/фон.png"));
-            fox = ImageIO.read(new File("src/img/чел.png"));
+            gamer = ImageIO.read(new File("src/img/чел.png"));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        setSize(3000, 2000);
+        JPanel panel = new JPanel()
+        {
+            @Override
+            public void paintComponent(Graphics g)
+            {
+                super.paintComponent(g);
+                g.drawImage(bg, 0, 0, this);
+                g.drawImage(gamer, x,y, this);
+                for (int i = 0; i < wood_.size(); i++) {
+                    g.drawImage(wood_.get(i).wood, wood_.get(i).x, wood_.get(i).y, this);
+                }
+            }
+        };
+        add(panel);
+        setSize(1670, 941);
         setVisible(true);
         addKeyListener(kl);
         for (int i = 0; i < 5; i++) {
-            fish_.add(new fish());
+            wood_.add(new wood());
         }
         // time.start();
     }
 
     public static void main(String[] args) {
-        new game_fox();
-    }
-
-    public void paint(Graphics g) {
-        super.paint(g);
-        g.drawImage(bg, 0, 0, this);
-        g.drawImage(fox, x, 300, this);
-        for (int i = 0; i < fish_.size(); i++) {
-            g.drawImage(fish_.get(i).image, fish_.get(i).x, fish_.get(i).y, this);
-        }
+        new game_a();
     }
 
 
