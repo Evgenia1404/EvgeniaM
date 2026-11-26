@@ -1,37 +1,25 @@
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Random;
 
 public class wood {
     public BufferedImage wood;
     public int x, y;
 
-    wood() {
+
+    public wood(int x, int y) {
+        this.x = x;
+        this.y = y;
         try {
-            wood = ImageIO.read(new File("src/img/wood1.png"));
+            wood = ImageIO.read(new File("src/img/wood.png"));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        x = new Random().nextInt(800);
-        y = new Random().nextInt(300);
-
     }
 
-    void move() {
-        y += 5;
-        if (y > 450) {
-            y = -100;
-            x = new Random().nextInt(800);
-        }
+    public void draw(Graphics g) {
+        g.drawImage(wood, x, y, null);
     }
-
-    /*public boolean intersect(character c)
-    {
-        boolean answer = false;
-
-        return answer;
-    }*/
-
 
 }
