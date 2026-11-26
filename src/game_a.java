@@ -80,7 +80,6 @@ public class game_a extends JFrame {
                 }
             }*/
         }
-
         @Override
         public void keyReleased(KeyEvent e) {
         }
@@ -110,27 +109,59 @@ public class game_a extends JFrame {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.drawImage(bg, 0, 0, this);
-                g.drawImage(gamer, x, y, this);
                 for (tree t : tree_) {
                     t.draw(g);
                 }
                 for (wood w : wood_) {
                     w.draw(g);
                 }
+                g.drawImage(gamer, x, y, this);
             }
         };
+
         panel.addMouseListener(new tree_click(tree_, wood_, panel));
-        tree_.add(new tree(1250, 270));
-        tree_.add(new tree(1300, 400));
-        tree_.add(new tree(1250, 350));
-        tree_.add(new tree(1300, 300));
-        tree_.add(new tree(1150, 250));
+
+        tree_.add(new tree(1273, 270));
+
+        tree_.add(new tree(1167, 285));
+        tree_.add(new tree(1217, 285));
+        tree_.add(new tree(1245, 285));
+        tree_.add(new tree(1300, 285));
+
+        tree_.add(new tree(1217, 300));
+        tree_.add(new tree(1273, 300));
+        tree_.add(new tree(1328, 300));
+
+        tree_.add(new tree(1167, 330));
+        tree_.add(new tree(1222, 330));
+        tree_.add(new tree(1278, 330));
+        tree_.add(new tree(1333, 330));
+        tree_.add(new tree(1383, 330));
+
+        tree_.add(new tree(1137, 360));
+        tree_.add(new tree(1192, 360));
+        tree_.add(new tree(1247, 360));
+        tree_.add(new tree(1303, 360));
+        tree_.add(new tree(1358, 360));
+        tree_.add(new tree(1413, 360));
+
+        tree_.add(new tree(1177, 390));
+        tree_.add(new tree(1232, 390));
+        tree_.add(new tree(1288, 390));
+        tree_.add(new tree(1343, 390));
+
+        tree_.add(new tree(1202, 420));
+        tree_.add(new tree(1258, 420));
+        tree_.add(new tree(1313, 420));
+
+        tree_.add(new tree(1262, 440));
         add(panel);
         setSize(1672, 941);
         setVisible(true);
         addKeyListener(kl);
         // time.start();
     }
+
 
     public static void main(String[] args) {
         new game_a();
